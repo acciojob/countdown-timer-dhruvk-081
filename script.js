@@ -18,7 +18,7 @@ function startCountdown() {
 	const endTime = new Date(currentTime + durationMs);
 	
 	// Display the end time
-	endTimeElement.textContent = 'End Time: ' + formatTime(endTime);
+	endTimeElement.innerHTML = formatTime(endTime);
 	
 	// Update the countdown every second
 	let countdownInterval = setInterval(function (endTime) {
