@@ -41,8 +41,7 @@ function startCountdown() {
 			}
 		
 		// Display the remaining time
-		countDownElement.textContent = 'Remaining Time: ' + hours + "h "
-  + minutes + "m " + seconds + "s ";
+		countDownElement.textContent = 'Remaining Time: ' + hours + "h " + minutes + "m " + seconds + "s ";
 		}, 1000, endTime);
 	}
 
