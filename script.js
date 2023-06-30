@@ -14,7 +14,7 @@ button.addEventListener('click', () => {
 	let minute = dateObj.getMinutes()
     let content = (hour % 12 || 12) + ":" + minute + (hour < 12 ? " AM" : " PM");
 	
-	endTimeTag.innerHTML = content
+	endTimeTag.innerHTML = content;
 	setInterval(updateTimer, 1000)
 })
  
