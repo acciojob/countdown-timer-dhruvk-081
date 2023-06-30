@@ -14,12 +14,17 @@ function startCountdown() {
 	const durationMs = duration * 60 * 1000;
 	
 	// Get the current time and calculate the end time
-	const currentTime = new Date();
-	currentTime.setTime(currentTime.getTime() + durationMs);
-	const endTime = currentTime.getTime();
+	let currentTime = new Date();
+    currentTime.setTime(currentTime.getTime() + durationMs);
+	let endTime = currentTime.getTime();
+
+	let hour = currentTime.getHours();
+	let minutes = currentTime.getMinutes();
+	minutes = minutes < 10 ? '0' + minutes : minutes;
+    let content = (hour % 12 || 12) + ":" + minutes + (hour < 12 ? " AM" : " PM");
 	
 	// Display the end time
-	endTimeElement.textContent = formatTime(endTime);
+	endTimeElement.textContent = content;
 	
 	// Update the countdown every second
 	let countdownInterval = setInterval(function () {
@@ -51,14 +56,14 @@ function formatTime(time) {
   const date = new Date(time);
   let hours = date.getHours();
   let minutes = date.getMinutes();
-  const period = hours >= 12 ? ' PM' : ' AM';
+  const period = hours >= 12 ? 'PM' : 'AM';
 
   hours = hours % 12;
   hours = hours ? hours : 12; // Handle midnight (0 hours)
 
   minutes = minutes < 10 ? '0' + minutes : minutes;
 
-  return hours + ':' + minutes + period;
+  return hours + ':' + minutes + ' ' + period;
 }
 
 // Event listener for the start button
