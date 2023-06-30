@@ -24,7 +24,7 @@ function startCountdown() {
     let content = (hour % 12 || 12) + ":" + minutes + (hour < 12 ? " AM" : " PM");
 	
 	// Display the end time
-	endTimeElement.textContent = content;
+	endTimeElement.innerHTML = content;
 	
 	// Update the countdown every second
 	let countdownInterval = setInterval(function () {
