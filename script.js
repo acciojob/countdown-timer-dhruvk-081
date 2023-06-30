@@ -14,14 +14,15 @@ function startCountdown() {
 	const durationMs = duration * 60 * 1000;
 	
 	// Get the current time and calculate the end time
-	const currentTime = new Date().getTime();
-	const endTime = new Date(currentTime + durationMs);
+	const currentTime = new Date();
+	currentTime.setTime(currentTime.getTime() + durationMs);
+	const endTime = currentTime.getTime();
 	
 	// Display the end time
 	endTimeElement.textContent = formatTime(endTime);
 	
 	// Update the countdown every second
-	let countdownInterval = setInterval(function (endTime) {
+	let countdownInterval = setInterval(function () {
 		// Get the current time
 		let currentTime = new Date().getTime();
 		
@@ -42,7 +43,7 @@ function startCountdown() {
 		
 		// Display the remaining time
 		countDownElement.textContent = 'Remaining Time: ' + hours + "h " + minutes + "m " + seconds + "s ";
-		}, 1000, endTime);
+		}, 1000);
 	}
 
 // Function to format time as HH:MM PM/AM
@@ -50,14 +51,14 @@ function formatTime(time) {
   const date = new Date(time);
   let hours = date.getHours();
   let minutes = date.getMinutes();
-  const period = hours >= 12 ? 'PM' : 'AM';
+  const period = hours >= 12 ? ' PM' : ' AM';
 
   hours = hours % 12;
   hours = hours ? hours : 12; // Handle midnight (0 hours)
 
   minutes = minutes < 10 ? '0' + minutes : minutes;
 
-  return hours + ':' + minutes + ' ' + period;
+  return hours + ':' + minutes + period;
 }
 
 // Event listener for the start button
